@@ -1,8 +1,10 @@
 	import java.io.*;
 	import java.net.*;
 	import java.util.*;
+	import java.util.Scanner;
 
-	public class ServidorDeCalculo {
+
+	public class centroDeCalculo {
 		public static void main(String[] args) throws IOException {
 			ServerSocket serverSocket = new ServerSocket(5000);
 			System.out.println("Servidor de cálculo iniciado...");
@@ -38,7 +40,7 @@
 						int sumaParcial = suma1;
 						try {
 							/*Se envia la parte 1 al ServidorOperacion1 y se obtiene su suma parcial*/
-							int sumaParcial = enviarParte("192.168.1.30", 6000, parte1);
+							sumaParcial = enviarParte("192.168.1.30", 6000, parte1);
 							System.out.println("Suma parcial recibida de servidor de operacion 1: " + sumaParcial);
 						} catch (IOException e) {
 							System.out.println("El servidor de operacion 1 no responde.Se usa la suma local: " + suma1);
@@ -46,7 +48,7 @@
 						
 						/*Intento para enviar parte parcial del operador 1 al operador 2*/
 						try {
-							int sumaTotal = enviarParcial("192.168.1.40", 7000, sumaParcial, parte2);
+							sumaTotal = enviarParcial("192.168.1.40", 7000, sumaParcial, parte2);
 							System.out.println("Suma total recibida del servidor de operacion 2: " + sumaTotal);
 						} catch (IOException e) {
 							System.out.println("El servidor de operacion 2 no responde.Se usa la suma local: " + suma2);
@@ -90,7 +92,7 @@
             return Integer.parseInt(in.readLine());
         }
     }
-}
+
 		
 		/*Función auxiliar para que el centro de cálculo calcule por si misma la suma de 
 		cada mitad del array*/
