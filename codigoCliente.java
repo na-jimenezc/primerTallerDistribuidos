@@ -1,7 +1,9 @@
-	import java.io.*;
+import java.io.*;
 	import java.net.*;
+	import java.util.Scanner;
 
-	public class Cliente {
+
+	public class codigoCliente {
 		public static void main(String[] args) throws IOException {
 			
 			
@@ -10,10 +12,10 @@
 			System.out.println("\nIngrese el vector separando los números por comas (,):");
 			String input = scanner.nextLine();
 			
-			String datos = input.replace(",");
+			String datos = input.replace(",", "");
 			
 			/*Para conectar con el servidor de cálculo*/
-			Socket socket = new Socket("192.168.1.20", 5000); 
+			Socket socket = new Socket("10.0.10.159", 5000); 
 			
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
